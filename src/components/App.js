@@ -1,6 +1,7 @@
 import React from 'react';
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
 const style = { marginTop: '10px' }
 
@@ -16,7 +17,6 @@ class App extends React.Component {
     })
 
     this.setState({ images: response.data.results });
-    console.log(this.state.images);
 
     // // Using .then at the end of the promise
     // .then(response => {
@@ -28,7 +28,7 @@ class App extends React.Component {
     return (
       <div className="ui container" style={style} >
         <SearchBar onSubmit={this.onSearchSubmit} />
-        Found: {this.state.images.length} images
+        <ImageList images={this.state.images} />
       </div>
     );
   }
